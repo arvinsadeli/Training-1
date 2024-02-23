@@ -125,3 +125,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthAmount: 1
+  pickupHealthSound: {fileID: 8300000, guid: 32acd59e24ac0ca4587632a7c4cf371d, type: 3}

@@ -153,3 +153,4 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  spikeHeadSound: {fileID: 8300000, guid: e9c92872a0dc4c3489e1515a413521ff, type: 3}

@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     float wallJumpCooldown;
     float initialGravity;
 
+    [Header("Sound")]
+    [SerializeField] AudioClip jumpSound;
+
     // Start is called before the first frame update
 
     void Start()
@@ -65,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.gravityScale = initialGravity;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
                 NormalJump(movement.jumpForce);
             }
@@ -82,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(IsGrounded()) //if grounded
             {
+                SoundManager.instance.PlaySound(jumpSound);
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 anim.SetTrigger("jumpTrigger");
             }

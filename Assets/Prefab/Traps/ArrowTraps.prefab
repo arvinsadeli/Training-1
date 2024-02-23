@@ -143,6 +143,7 @@ MonoBehaviour:
   - {fileID: 4115385727491977945}
   - {fileID: 4115385727115287186}
   - {fileID: 4115385726798995390}
+  attackSound: {fileID: 8300000, guid: babd83fa79f8d55498435817f9f8dda3, type: 3}
 --- !u!1001 &1789909235580558874
 PrefabInstance:
   m_ObjectHideFlags: 0

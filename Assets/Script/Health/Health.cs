@@ -8,13 +8,17 @@ public class Health : MonoBehaviour
     [SerializeField] float startingHealth;
     public float currentHealth { get; private set; }
     Animator anim;
-    bool dead;
+    [HideInInspector] public bool dead;
     // Start is called before the first frame update
 
     [Header("iFrames")]
     [SerializeField] float IFramesDuration;
     [SerializeField] int numberOffFlashes;
     SpriteRenderer spriteRenderer;
+
+    [Header("Sound")]
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip hurtSound;
 
     private void Awake()
     {
@@ -42,22 +46,57 @@ public class Health : MonoBehaviour
             //receive damage
             anim.SetTrigger("hurtTrigger");
             StartCoroutine(Invunerability());
+            SoundManager.instance.PlaySound(hurtSound);
         }
         else
         {
             //dead
             if(!dead)
             {
-                GetComponent<PlayerMovement>().enabled = false;
                 anim.SetTrigger("dieTrigger");
+
+                //Player
+                if(GetComponent<PlayerMovement>() != null)
+                    GetComponent<PlayerMovement>().enabled = false;
+
+                //Enemy
+                if(GetComponent<Patrol>() != null)
+                    GetComponent<Patrol>().enabled = false;
+
+                if(GetComponent<MeleeEnemy>() != null)
+                    GetComponent<MeleeEnemy>().enabled = false;
+
                 dead = true;
+                SoundManager.instance.PlaySound(deathSound);
             }
         }
     }
 
     public void ReceiveHealth(int healthAmount)
     {
-        currentHealth += Mathf.Clamp(currentHealth + healthAmount, 0, startingHealth);
+        currentHealth = Mathf.Clamp(currentHealth + healthAmount, 0, startingHealth);
+    }
+
+    public void Respawn()
+    {
+        dead = false;
+        ReceiveHealth(Mathf.FloorToInt(startingHealth));
+        anim.ResetTrigger("die");
+        anim.Play("Idle");
+
+        //Player
+        if (GetComponent<PlayerMovement>() != null)
+            GetComponent<PlayerMovement>().enabled = true;
+
+        //Enemy
+        if (GetComponent<Patrol>() != null)
+            GetComponent<Patrol>().enabled = true;
+
+        if (GetComponent<MeleeEnemy>() != null)
+            GetComponent<MeleeEnemy>().enabled = true;
+
+
+
     }
 
     IEnumerator Invunerability()

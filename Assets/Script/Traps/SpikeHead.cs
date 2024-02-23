@@ -13,6 +13,10 @@ public class SpikeHead : EnemyDamage
     Vector3 destination;
     float checkTimer;
     bool isAttacking;
+
+    [Header("Sound")]
+    [SerializeField] AudioClip spikeHeadSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +77,7 @@ public class SpikeHead : EnemyDamage
     private void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
+        SoundManager.instance.PlaySound(spikeHeadSound);
         Stop();
     }
 }

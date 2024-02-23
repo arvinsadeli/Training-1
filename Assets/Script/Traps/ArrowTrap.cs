@@ -10,6 +10,9 @@ public class ArrowTrap : MonoBehaviour
     [SerializeField] GameObject[] arrows;
     float cooldownTimer;
 
+    [Header("Sound")]
+    [SerializeField] AudioClip attackSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,8 @@ public class ArrowTrap : MonoBehaviour
 
     void Attack()
     {
+        SoundManager.instance.PlaySound(attackSound);
+
         cooldownTimer = 0;
 
         arrows[FindArrow()].transform.position = firePoint.position;

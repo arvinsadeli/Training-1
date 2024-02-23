@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 8470786686731309240}
   - component: {fileID: 8470786686731309241}
   - component: {fileID: 917351857}
+  - component: {fileID: 2026975162}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -116,7 +117,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.12, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -140,7 +141,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 5.12, y: 2.56}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 5.12, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -190,6 +191,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
+  jumpSound: {fileID: 8300000, guid: 146eb22ef6baedb4ab6e0e06b97f29d4, type: 3}
 --- !u!95 &8470786686731309240
 Animator:
   serializedVersion: 5
@@ -236,6 +238,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  fireballSound: {fileID: 8300000, guid: 1be668e827da39b4dbb3228212f39372, type: 3}
 --- !u!114 &917351857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +251,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f03fd1d6e88f54f94d4f50b25a1396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10
+  startingHealth: 3
   IFramesDuration: 1
   numberOffFlashes: 3
+  deathSound: {fileID: 8300000, guid: 2ceaf36b02f688d4ca35b71c8c13777d, type: 3}
+  hurtSound: {fileID: 8300000, guid: 7d8ca98825788dc46a655100aa0ca328, type: 3}
+--- !u!114 &2026975162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470786686731309238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51f4646214bd384782954df741ff4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointSound: {fileID: 8300000, guid: 6c4b07d08263aa74ea6083b2e8a51dcc, type: 3}
